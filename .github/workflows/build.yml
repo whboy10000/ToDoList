@@ -76,7 +76,7 @@ jobs:
       - run: flutter build macos --release
       - name: 制作 DMG
         run: |
-          hdiutil create -volname TaskFlow -srcfolder build/macos/Build/Products/Release/flutter_quickstart.app -ov -format UDZO TaskFlow-macos.dmg
+          hdiutil create -volname TaskFlow -srcfolder build/macos/Build/Products/Release/TaskFlow.app -ov -format UDZO TaskFlow-macos.dmg
       - uses: actions/upload-artifact@v4
         with:
           name: TaskFlow-macos
