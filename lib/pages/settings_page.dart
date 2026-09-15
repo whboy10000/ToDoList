@@ -249,7 +249,7 @@ class SettingsPage extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Center(
-            child: Text('TaskFlow · v0.1.0',
+            child: Text('ToDoList · v0.1.0',
                 style: theme.textTheme.bodySmall),
           ),
         ],

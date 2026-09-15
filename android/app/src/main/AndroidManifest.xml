@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="TaskFlow 任务清单"
+        android:label="ToDOList"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

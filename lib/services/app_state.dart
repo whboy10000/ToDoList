@@ -400,7 +400,7 @@ class AppState extends ChangeNotifier {
     final now = DateTime.now();
     final active = tasks.where((t) => t.status != TaskStatus.trashed).toList();
     return const JsonEncoder.withIndent('  ').convert({
-      'app': 'TaskFlow',
+      'app': 'ToDOList',
       'version': 1,
       'exportedAt': now.toIso8601String(),
       'categories': categories.map((c) => c.toJson()).toList(),

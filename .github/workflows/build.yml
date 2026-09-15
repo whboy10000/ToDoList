@@ -17,11 +17,11 @@ jobs:
       - run: flutter pub get
       - run: flutter build windows --release
       - name: 打包 zip
-        run: Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath TaskFlow-windows-x64.zip
+        run: Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath ToDoList-windows-x64.zip
       - uses: actions/upload-artifact@v4
         with:
-          name: TaskFlow-windows-x64
-          path: TaskFlow-windows-x64.zip
+          name: ToDoList-windows-x64
+          path: ToDoList-windows-x64.zip
 
   build-linux:
     name: Linux 安装包 (tar.gz)
@@ -39,11 +39,11 @@ jobs:
       - run: flutter build linux --release
       - name: 打包 tar.gz
         run: |
-          tar -czf TaskFlow-linux-x64.tar.gz -C build/linux/x64/release bundle
+          tar -czf ToDoList-linux-x64.tar.gz -C build/linux/x64/release bundle
       - uses: actions/upload-artifact@v4
         with:
-          name: TaskFlow-linux-x64
-          path: TaskFlow-linux-x64.tar.gz
+          name: ToDoList-linux-x64
+          path: ToDoList-linux-x64.tar.gz
 
   build-android:
     name: Android APK
@@ -61,8 +61,26 @@ jobs:
       - run: flutter build apk --release
       - uses: actions/upload-artifact@v4
         with:
-          name: TaskFlow-android
+          name: ToDoList-android
           path: build/app/outputs/flutter-apk/app-release.apk
+
+  build-web:
+    name: Web 网页端 (zip)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter pub get
+      - run: flutter build web --release
+      - name: 打包 zip
+        run: |
+          cd build/web && zip -qry ../../ToDoList-web.zip .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ToDoList-web
+          path: ToDoList-web.zip
 
   build-macos:
     name: macOS DMG
@@ -76,8 +94,8 @@ jobs:
       - run: flutter build macos --release
       - name: 制作 DMG
         run: |
-          hdiutil create -volname TaskFlow -srcfolder build/macos/Build/Products/Release/TaskFlow.app -ov -format UDZO TaskFlow-macos.dmg
+          hdiutil create -volname ToDoList -srcfolder build/macos/Build/Products/Release/ToDoList.app -ov -format UDZO ToDoList-macos.dmg
       - uses: actions/upload-artifact@v4
         with:
-          name: TaskFlow-macos
-          path: TaskFlow-macos.dmg
+          name: ToDoList-macos
+          path: ToDoList-macos.dmg

@@ -1,6 +1,6 @@
 {
-    "name": "flutter_quickstart",
-    "short_name": "flutter_quickstart",
+    "name": "ToDOList",
+    "short_name": "ToDOList",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

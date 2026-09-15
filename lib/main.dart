@@ -8,19 +8,19 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final state = AppState();
   await state.load();
-  runApp(TaskFlowApp(state: state));
+  runApp(ToDoListApp(state: state));
 }
 
-class TaskFlowApp extends StatelessWidget {
+class ToDoListApp extends StatelessWidget {
   final AppState state;
-  const TaskFlowApp({super.key, required this.state});
+  const ToDoListApp({super.key, required this.state});
 
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
       listenable: state,
       builder: (context, _) => MaterialApp(
-        title: 'TaskFlow 任务清单',
+        title: 'ToDOList',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,

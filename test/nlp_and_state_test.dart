@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_quickstart/models/task.dart';
-import 'package:flutter_quickstart/services/nlp_parser.dart';
-import 'package:flutter_quickstart/services/app_state.dart';
+import 'package:todolist/models/task.dart';
+import 'package:todolist/services/nlp_parser.dart';
+import 'package:todolist/services/app_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
