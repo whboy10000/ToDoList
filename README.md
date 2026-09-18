@@ -44,9 +44,9 @@ docker run -d \
   ghcr.io/whboy10000/todolist:latest
 ```
 
-> 镜像默认为私有，拉取前需先登录：
+> 镜像为公开镜像，无需登录即可拉取。
+> 如之后将包改为私有，需先登录：
 > `echo <GH_TOKEN> | docker login ghcr.io -u whboy10000 --password-stdin`
-> （也可在 GitHub Packages 设置中将包改为 Public 免登录拉取）
 
 ### 本地自行构建
 
