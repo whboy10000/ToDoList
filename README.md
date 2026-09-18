@@ -25,7 +25,7 @@ Web 端以 Docker 镜像发布（多阶段构建：Flutter 编译静态文件 + 
 推送 `v*` 标签后 GitHub Actions 会自动构建并推送到 GHCR：
 
 - 最新版：`ghcr.io/whboy10000/todolist:latest`
-- 指定版本：`ghcr.io/whboy10000/todolist:v0.1.0`
+- 指定版本：`ghcr.io/whboy10000/todolist:v0.1.1`
 
 ### docker compose（推荐）
 
