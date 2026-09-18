@@ -137,11 +137,29 @@ jobs:
           name: ToDoList-ios
           path: ToDoList-ios-unsigned.ipa
 
+  build-web:
+    name: Web 网页端 (zip)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter pub get
+      - run: flutter build web --release
+      - name: 打包 zip
+        run: |
+          cd build/web && zip -qry ../../ToDoList-web.zip .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ToDoList-web
+          path: ToDoList-web.zip
+
   release:
     name: 发布 GitHub Release
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [build-windows, build-linux, build-macos, build-android, build-ios]
+    needs: [build-windows, build-linux, build-macos, build-android, build-ios, build-web]
     permissions:
       contents: write
     steps:
@@ -157,6 +175,7 @@ jobs:
           cp artifacts/ToDoList-macos/ToDoList-macos.dmg               release/
           cp artifacts/ToDoList-android/app-release.apk               release/ToDoList-android.apk
           cp artifacts/ToDoList-ios/ToDoList-ios-unsigned.ipa         release/
+          cp artifacts/ToDoList-web/ToDoList-web.zip                  release/
           ls -lh release
       - name: 创建 Release 并附加安装包
         uses: softprops/action-gh-release@v2
@@ -168,3 +187,4 @@ jobs:
             release/ToDoList-macos.dmg
             release/ToDoList-android.apk
             release/ToDoList-ios-unsigned.ipa
+            release/ToDoList-web.zip

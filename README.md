@@ -208,8 +208,9 @@ docker build --build-arg BASE_HREF=/todolist/ -t todolist-web .
 | macOS DMG | macos-latest | `ToDoList-macos.dmg` |
 | Android APK | ubuntu-latest | `app-release.apk` |
 | iOS（未签名） | macos-latest | `ToDoList-ios-unsigned.ipa` |
+| Web 网页端 | ubuntu-latest | `ToDoList-web.zip`（解压后任意静态服务器托管） |
 | Web Docker 镜像 | ubuntu-latest | 推送至 `ghcr.io/whboy10000/todolist`（含 GHA 层缓存） |
-| 发布 Release | ubuntu-latest | 仅标签触发：自动创建 GitHub Release 并附加上述 5 个安装包 |
+| 发布 Release | ubuntu-latest | 仅标签触发：自动创建 GitHub Release 并附加上述 6 个安装包 |
 
 触发方式：
 
