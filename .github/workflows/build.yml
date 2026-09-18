@@ -99,3 +99,24 @@ jobs:
         with:
           name: ToDoList-macos
           path: ToDoList-macos.dmg
+
+  build-ios:
+    name: iOS IPA (未签名)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter pub get
+      - run: flutter build ios --release --no-codesign
+      - name: 打包未签名 IPA
+        run: |
+          rm -rf Payload ToDoList-ios-unsigned.ipa
+          mkdir -p Payload
+          cp -R build/ios/iphoneos/Runner.app Payload/
+          zip -qry ToDoList-ios-unsigned.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ToDoList-ios
+          path: ToDoList-ios-unsigned.ipa
