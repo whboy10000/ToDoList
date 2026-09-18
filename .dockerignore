@@ -1,0 +1,27 @@
+# 版本控制与 CI
+.git
+.github
+.vscode
+
+# Flutter / Dart
+.dart_tool
+.flutter-plugins-dependencies
+.pub-cache
+.pub
+build
+coverage
+
+# 本地打包产物
+releases
+
+# 原生平台目录（Web 镜像不需要）
+android
+ios
+macos
+windows
+linux
+
+# 其他
+*.iml
+.DS_Store
+*.log

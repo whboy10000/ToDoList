@@ -1,0 +1,7 @@
+services:
+  todolist-web:
+    image: ghcr.io/whboy10000/todolist:latest
+    container_name: todolist-web
+    ports:
+      - "8080:80"
+    restart: unless-stopped
